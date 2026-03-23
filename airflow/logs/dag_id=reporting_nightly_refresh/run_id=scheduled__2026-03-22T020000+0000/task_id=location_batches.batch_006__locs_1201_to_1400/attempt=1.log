@@ -205,3 +205,78 @@ Traceback (most recent call last):
 airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
 [2026-03-23T06:28:59.274+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_006__locs_1201_to_1400, execution_date=20260322T020000, start_date=20260323T062733, end_date=20260323T062859
 [2026-03-23T06:29:03.731+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=183, status='terminated', exitcode=2, started='06:27:33') (183) terminated with exit code 2
+[2026-03-23T06:55:34.574+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:55:34.782+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_006__locs_1201_to_1400 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:55:34.817+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_006__locs_1201_to_1400 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:55:34.819+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:55:34.914+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_006__locs_1201_to_1400> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:55:34.942+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_006__locs_1201_to_1400', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/reporting_refresh_dag.py', '--cfg-path', '/tmp/tmpl1y7dell']
+[2026-03-23T06:55:34.951+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask location_batches.batch_006__locs_1201_to_1400
+[2026-03-23T06:55:34.953+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=213) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:55:34.956+0000] {standard_task_runner.py:63} INFO - Started process 221 to run task
+[2026-03-23T06:55:35.408+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_006__locs_1201_to_1400 scheduled__2026-03-22T02:00:00+00:00 [running]> on host 709b26eca54f
+[2026-03-23T06:55:36.197+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_006__locs_1201_to_1400' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:55:36.201+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:55:36.442+0000] {refresh_runner.py:135} INFO - Run 20260323_065536 — 200 locations, concurrency=10
+[2026-03-23T06:55:38.956+0000] {refresh_runner.py:76} INFO - Navigating to login: http://mock_portal:5001
+[2026-03-23T06:55:40.030+0000] {refresh_runner.py:82} INFO - Authentication successful.
+[2026-03-23T06:55:41.269+0000] {refresh_runner.py:76} INFO - Navigating to login: http://mock_portal:5001
+[2026-03-23T06:55:43.837+0000] {refresh_runner.py:82} INFO - Authentication successful.
+[2026-03-23T06:55:46.789+0000] {refresh_runner.py:76} INFO - Navigating to login: http://mock_portal:5001
+[2026-03-23T06:55:48.264+0000] {refresh_runner.py:82} INFO - Authentication successful.
+[2026-03-23T06:55:50.939+0000] {refresh_runner.py:76} INFO - Navigating to login: http://mock_portal:5001
+[2026-03-23T06:55:58.894+0000] {refresh_runner.py:82} INFO - Authentication successful.
+[2026-03-23T06:56:02.636+0000] {refresh_runner.py:76} INFO - Navigating to login: http://mock_portal:5001
+[2026-03-23T06:56:04.456+0000] {refresh_runner.py:82} INFO - Authentication successful.
+[2026-03-23T06:56:06.782+0000] {refresh_runner.py:76} INFO - Navigating to login: http://mock_portal:5001
+[2026-03-23T06:56:10.493+0000] {refresh_runner.py:82} INFO - Authentication successful.
+[2026-03-23T06:56:57.445+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:57:01.924+0000] {process_utils.py:132} INFO - Sending 15 to group 221. PIDs of all processes in the group: [231, 307, 923, 1502, 2079, 2655, 3243, 3871, 3899, 3901, 4152, 4076, 3259, 3260, 3369, 3585, 3365, 2669, 2671, 2934, 3072, 2855, 2084, 2085, 2144, 2268, 2125, 1516, 1519, 1582, 1744, 1578, 925, 926, 952, 1004, 943, 316, 319, 427, 623, 373, 221]
+[2026-03-23T06:57:02.185+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 221
+[2026-03-23T06:57:02.543+0000] {taskinstance.py:2607} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-03-23T06:57:07.086+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3243, status='terminated', started='06:56:04') (3243) terminated with exit code None
+[2026-03-23T06:57:07.108+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3585, status='terminated', started='06:56:06') (3585) terminated with exit code None
+[2026-03-23T06:57:07.172+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4076, status='terminated', started='06:56:24') (4076) terminated with exit code None
+[2026-03-23T06:57:07.197+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=319, status='terminated', started='06:55:38') (319) terminated with exit code None
+[2026-03-23T06:57:07.226+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2655, status='terminated', started='06:55:58') (2655) terminated with exit code None
+[2026-03-23T06:57:07.243+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2079, status='terminated', started='06:55:48') (2079) terminated with exit code None
+[2026-03-23T06:57:07.255+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3871, status='terminated', started='06:56:10') (3871) terminated with exit code None
+[2026-03-23T06:57:07.261+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3072, status='terminated', started='06:56:01') (3072) terminated with exit code None
+[2026-03-23T06:57:07.275+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3259, status='terminated', started='06:56:04') (3259) terminated with exit code None
+[2026-03-23T06:57:07.289+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3260, status='terminated', started='06:56:04') (3260) terminated with exit code None
+[2026-03-23T06:57:07.308+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1578, status='terminated', started='06:55:45') (1578) terminated with exit code None
+[2026-03-23T06:57:07.361+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2085, status='terminated', started='06:55:48') (2085) terminated with exit code None
+[2026-03-23T06:57:07.377+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1519, status='terminated', started='06:55:44') (1519) terminated with exit code None
+[2026-03-23T06:57:07.383+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3369, status='terminated', started='06:56:05') (3369) terminated with exit code None
+[2026-03-23T06:57:07.467+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=373, status='terminated', started='06:55:38') (373) terminated with exit code None
+[2026-03-23T06:57:07.470+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2084, status='terminated', started='06:55:48') (2084) terminated with exit code None
+[2026-03-23T06:57:07.485+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1744, status='terminated', started='06:55:46') (1744) terminated with exit code None
+[2026-03-23T06:57:07.492+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1582, status='terminated', started='06:55:45') (1582) terminated with exit code None
+[2026-03-23T06:57:07.510+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3901, status='terminated', started='06:56:12') (3901) terminated with exit code None
+[2026-03-23T06:57:07.521+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2669, status='terminated', started='06:55:59') (2669) terminated with exit code None
+[2026-03-23T06:57:07.555+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2671, status='terminated', started='06:55:59') (2671) terminated with exit code None
+[2026-03-23T06:57:07.558+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2855, status='terminated', started='06:56:00') (2855) terminated with exit code None
+[2026-03-23T06:57:07.561+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4152, status='terminated', started='06:56:40') (4152) terminated with exit code None
+[2026-03-23T06:57:07.618+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=926, status='terminated', started='06:55:40') (926) terminated with exit code None
+[2026-03-23T06:57:07.622+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1004, status='terminated', started='06:55:40') (1004) terminated with exit code None
+[2026-03-23T06:57:07.624+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2144, status='terminated', started='06:55:49') (2144) terminated with exit code None
+[2026-03-23T06:57:07.628+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2125, status='terminated', started='06:55:48') (2125) terminated with exit code None
+[2026-03-23T06:57:07.632+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1516, status='terminated', started='06:55:44') (1516) terminated with exit code None
+[2026-03-23T06:57:07.634+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3899, status='terminated', started='06:56:12') (3899) terminated with exit code None
+[2026-03-23T06:57:07.637+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3365, status='terminated', started='06:56:05') (3365) terminated with exit code None
+[2026-03-23T06:57:07.639+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2268, status='terminated', started='06:55:49') (2268) terminated with exit code None
+[2026-03-23T06:57:07.641+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=231, status='terminated', started='06:55:36') (231) terminated with exit code None
+[2026-03-23T06:57:07.657+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=923, status='terminated', started='06:55:40') (923) terminated with exit code None
+[2026-03-23T06:57:07.662+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=952, status='terminated', started='06:55:40') (952) terminated with exit code None
+[2026-03-23T06:57:07.664+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=427, status='terminated', started='06:55:38') (427) terminated with exit code None
+[2026-03-23T06:57:07.726+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=316, status='terminated', started='06:55:38') (316) terminated with exit code None
+[2026-03-23T06:57:07.728+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=623, status='terminated', started='06:55:38') (623) terminated with exit code None
+[2026-03-23T06:57:07.731+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=943, status='terminated', started='06:55:40') (943) terminated with exit code None
+[2026-03-23T06:57:07.734+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=307, status='terminated', started='06:55:37') (307) terminated with exit code None
+[2026-03-23T06:57:07.834+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1502, status='terminated', started='06:55:43') (1502) terminated with exit code None
+[2026-03-23T06:57:07.836+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=925, status='terminated', started='06:55:40') (925) terminated with exit code None
+[2026-03-23T06:57:07.840+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2934, status='terminated', started='06:56:00') (2934) terminated with exit code None
+[2026-03-23T06:58:02.443+0000] {process_utils.py:150} WARNING - process psutil.Process(pid=221, name='airflow task ru', status='sleeping', started='06:55:34') did not respond to SIGTERM. Trying SIGKILL
+[2026-03-23T06:58:02.516+0000] {process_utils.py:87} INFO - Sending the signal 9 to group 221
+[2026-03-23T06:58:02.613+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=221, name='airflow task ru', status='terminated', exitcode=<Negsignal.SIGKILL: -9>, started='06:55:34') (221) terminated with exit code -9
+[2026-03-23T06:58:02.620+0000] {standard_task_runner.py:178} ERROR - Job 9 was killed before it finished (likely due to running out of memory)
