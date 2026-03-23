@@ -15,13 +15,16 @@ Airflow Variables (set in UI → Admin → Variables):
 """
 
 from __future__ import annotations
-import subprocess, logging
+import asyncio
+import os
+import logging
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.models import Variable
 from airflow.operators.python import PythonOperator
 from airflow.operators.empty import EmptyOperator
 from airflow.utils.task_group import TaskGroup
+from automation.refresh_runner import run_batch
 
 log = logging.getLogger(__name__)
 
@@ -42,12 +45,16 @@ default_args = {
 }
 
 def run_location_batch(batch_index: int, location_ids: list, **context):
-    cmd = [
-        "python", "/opt/automation/refresh_runner.py",
-        "--locations", ",".join(location_ids),
-        "--concurrency", str(CONCURRENCY),
-        "--headless"
-    ]
+    import sys, os
+    sys.path.insert(0, "/opt/airflow/dags")
+    os.environ["REPORT_URL"] = os.getenv("REPORT_URL", "http://mock_portal:5001")
+    os.environ["REPORT_USER"] = os.getenv("REPORT_USER", "admin")
+    os.environ["REPORT_PASS"] = os.getenv("REPORT_PASS", "password")
+
+    import asyncio
+    from refresh_runner import run_batch
+    asyncio.run(run_batch(location_ids, concurrency=CONCURRENCY, headless=True))
+
     log.info("Batch %d: %d locations", batch_index, len(location_ids))
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
     if result.stdout: log.info("STDOUT:\n%s", result.stdout)
