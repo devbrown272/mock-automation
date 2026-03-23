@@ -1,0 +1,186 @@
+[2026-03-23T06:42:28.943+0000] {processor.py:161} INFO - Started process (PID=11710) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:42:28.946+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:42:28.948+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:42:28.947+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:42:28.973+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:42:28.970+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 991, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1129, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1059, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 54
+    log.info("Batch %d: %d locations", batch_index, len(location_ids))
+IndentationError: unexpected indent
+[2026-03-23T06:42:28.974+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:42:29.074+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.145 seconds
+[2026-03-23T06:42:59.179+0000] {processor.py:161} INFO - Started process (PID=11715) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:42:59.181+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:42:59.183+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:42:59.182+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:42:59.209+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:42:59.207+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 991, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1129, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1059, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 54
+    log.info("Batch %d: %d locations", batch_index, len(location_ids))
+IndentationError: unexpected indent
+[2026-03-23T06:42:59.210+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:42:59.305+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.140 seconds
+[2026-03-23T06:43:29.600+0000] {processor.py:161} INFO - Started process (PID=11720) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:43:29.602+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:43:29.604+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:43:29.603+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:43:29.637+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:43:29.632+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:43:29.639+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:43:29.739+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.153 seconds
+[2026-03-23T06:43:59.855+0000] {processor.py:161} INFO - Started process (PID=11725) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:43:59.857+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:43:59.859+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:43:59.859+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:43:59.893+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:43:59.886+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:43:59.895+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:43:59.989+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.148 seconds
+[2026-03-23T06:44:30.261+0000] {processor.py:161} INFO - Started process (PID=11730) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:44:30.263+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:44:30.265+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:44:30.265+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:44:30.297+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:44:30.291+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:44:30.299+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:44:30.388+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.140 seconds
+[2026-03-23T06:45:00.526+0000] {processor.py:161} INFO - Started process (PID=11735) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:45:00.529+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:45:00.531+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:45:00.530+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:45:00.566+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:45:00.559+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:45:00.569+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:45:00.661+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.149 seconds
+[2026-03-23T06:45:30.900+0000] {processor.py:161} INFO - Started process (PID=11740) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:45:30.902+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:45:30.904+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:45:30.903+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:45:30.944+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:45:30.934+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:45:30.946+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:45:31.041+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.156 seconds
+[2026-03-23T06:46:01.171+0000] {processor.py:161} INFO - Started process (PID=11745) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:46:01.173+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:46:01.175+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:46:01.175+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:46:01.214+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:46:01.207+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:46:01.217+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:46:01.309+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.151 seconds
+[2026-03-23T06:46:31.557+0000] {processor.py:161} INFO - Started process (PID=11750) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:46:31.559+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:46:31.561+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:46:31.560+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:46:31.593+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:46:31.587+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:46:31.595+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:46:31.681+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.137 seconds
+[2026-03-23T06:47:01.825+0000] {processor.py:161} INFO - Started process (PID=11755) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:01.827+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:47:01.830+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:47:01.829+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:01.868+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:47:01.861+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:47:01.870+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:01.967+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.161 seconds
+[2026-03-23T06:47:20.105+0000] {processor.py:161} INFO - Started process (PID=11760) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:20.107+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:47:20.109+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:47:20.108+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:20.143+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:47:20.136+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:47:20.146+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:20.238+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.148 seconds
+[2026-03-23T06:47:50.456+0000] {processor.py:161} INFO - Started process (PID=11765) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:50.458+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:47:50.460+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:47:50.459+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:50.495+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:47:50.489+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:47:50.498+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:47:50.594+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.154 seconds
+[2026-03-23T06:48:20.731+0000] {processor.py:161} INFO - Started process (PID=11770) to work on /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:48:20.733+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/reporting_refresh_dag.py for tasks to queue
+[2026-03-23T06:48:20.735+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:48:20.734+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:48:20.771+0000] {logging_mixin.py:188} INFO - [2026-03-23T06:48:20.763+0000] {dagbag.py:350} ERROR - Failed to import: /opt/airflow/dags/reporting_refresh_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 346, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/reporting_refresh_dag.py", line 27, in <module>
+    from automation.refresh_runner import run_batch
+ModuleNotFoundError: No module named 'automation'
+[2026-03-23T06:48:20.773+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/reporting_refresh_dag.py
+[2026-03-23T06:48:20.863+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/reporting_refresh_dag.py took 0.147 seconds

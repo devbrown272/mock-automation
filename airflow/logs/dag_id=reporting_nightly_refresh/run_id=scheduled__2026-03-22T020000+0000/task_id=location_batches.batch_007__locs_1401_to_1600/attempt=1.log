@@ -1,0 +1,244 @@
+[2026-03-23T05:40:20.641+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T05:40:20.912+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T05:40:20.958+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T05:40:20.959+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T05:40:21.054+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_007__locs_1401_to_1600> on 2026-03-22 02:00:00+00:00
+[2026-03-23T05:40:21.100+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_007__locs_1401_to_1600', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmpzwu8g99p']
+[2026-03-23T05:40:21.143+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=180) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T05:40:21.160+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask location_batches.batch_007__locs_1401_to_1600
+[2026-03-23T05:40:21.162+0000] {standard_task_runner.py:63} INFO - Started process 183 to run task
+[2026-03-23T05:40:22.364+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [running]> on host 7849ea7120c5
+[2026-03-23T05:40:23.681+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_007__locs_1401_to_1600' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T05:40:23.690+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T05:40:23.791+0000] {lra_refresh_dag.py:51} INFO - Batch 7: 200 locations
+[2026-03-23T05:40:25.334+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T05:40:25.338+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T05:40:25.340+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 7 failed (exit 1)
+[2026-03-23T05:40:25.468+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_007__locs_1401_to_1600, execution_date=20260322T020000, start_date=20260323T054020, end_date=20260323T054025
+[2026-03-23T05:40:25.533+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task location_batches.batch_007__locs_1401_to_1600 (Batch 7 failed (exit 1); 183)
+[2026-03-23T05:40:25.633+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T05:40:25.905+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T05:40:25.909+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:11:47.327+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:11:47.552+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:11:47.590+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:11:47.592+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:11:47.656+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_007__locs_1401_to_1600> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:11:47.688+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_007__locs_1401_to_1600', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmpa9feosr0']
+[2026-03-23T06:11:47.701+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=180) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:11:47.702+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask location_batches.batch_007__locs_1401_to_1600
+[2026-03-23T06:11:47.704+0000] {standard_task_runner.py:63} INFO - Started process 190 to run task
+[2026-03-23T06:11:48.273+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [running]> on host acc78bbd7e9f
+[2026-03-23T06:11:49.380+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_007__locs_1401_to_1600' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:11:49.383+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:11:49.442+0000] {lra_refresh_dag.py:51} INFO - Batch 7: 200 locations
+[2026-03-23T06:11:51.246+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T06:11:51.247+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:11:51.254+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 7 failed (exit 1)
+[2026-03-23T06:11:51.459+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_007__locs_1401_to_1600, execution_date=20260322T020000, start_date=20260323T061147, end_date=20260323T061151
+[2026-03-23T06:11:51.520+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 9 for task location_batches.batch_007__locs_1401_to_1600 (Batch 7 failed (exit 1); 190)
+[2026-03-23T06:11:51.627+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T06:11:52.155+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T06:11:52.161+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:15:20.519+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:15:20.687+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:15:20.713+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:15:20.714+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:15:20.835+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_007__locs_1401_to_1600> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:15:20.866+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_007__locs_1401_to_1600', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmpxzresl1k']
+[2026-03-23T06:15:20.875+0000] {standard_task_runner.py:91} INFO - Job 17: Subtask location_batches.batch_007__locs_1401_to_1600
+[2026-03-23T06:15:20.884+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=244) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:15:20.886+0000] {standard_task_runner.py:63} INFO - Started process 250 to run task
+[2026-03-23T06:15:21.460+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [running]> on host acc78bbd7e9f
+[2026-03-23T06:15:22.342+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_007__locs_1401_to_1600' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:15:22.346+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:15:22.387+0000] {lra_refresh_dag.py:51} INFO - Batch 7: 200 locations
+[2026-03-23T06:15:23.393+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T06:15:23.394+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:15:23.395+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 7 failed (exit 1)
+[2026-03-23T06:15:23.507+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_007__locs_1401_to_1600, execution_date=20260322T020000, start_date=20260323T061520, end_date=20260323T061523
+[2026-03-23T06:15:23.542+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 17 for task location_batches.batch_007__locs_1401_to_1600 (Batch 7 failed (exit 1); 250)
+[2026-03-23T06:15:23.604+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T06:15:23.890+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T06:15:23.895+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:27:33.633+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:27:34.013+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:27:34.046+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:27:34.048+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:27:34.252+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_007__locs_1401_to_1600> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:27:34.436+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_007__locs_1401_to_1600', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmps6ic22i5']
+[2026-03-23T06:27:34.453+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=175) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:27:34.463+0000] {standard_task_runner.py:63} INFO - Started process 188 to run task
+[2026-03-23T06:27:34.461+0000] {standard_task_runner.py:91} INFO - Job 8: Subtask location_batches.batch_007__locs_1401_to_1600
+[2026-03-23T06:27:35.259+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 scheduled__2026-03-22T02:00:00+00:00 [running]> on host 4c525425e255
+[2026-03-23T06:27:36.490+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_007__locs_1401_to_1600' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:27:36.503+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:27:36.571+0000] {lra_refresh_dag.py:51} INFO - Batch 7: 200 locations
+[2026-03-23T06:28:55.185+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:28:57.301+0000] {process_utils.py:132} INFO - Sending 15 to group 188. PIDs of all processes in the group: [196, 210, 290, 888, 1470, 2058, 2639, 3215, 3775, 4361, 4862, 4974, 4978, 5171, 4401, 4402, 4465, 4573, 4464, 3810, 3811, 3968, 4000, 3944, 3236, 3248, 3370, 3407, 3348, 2678, 2681, 2810, 2849, 2807, 2066, 2067, 2185, 2242, 2160, 1480, 1481, 1568, 1638, 1539, 892, 893, 928, 1028, 921, 316, 317, 494, 629, 412, 188]
+[2026-03-23T06:28:57.315+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 188
+[2026-03-23T06:28:57.450+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4573, status='terminated', started='06:28:06') (4573) terminated with exit code None
+[2026-03-23T06:28:57.525+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3407, status='terminated', started='06:27:57') (3407) terminated with exit code None
+[2026-03-23T06:28:57.741+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=494, status='terminated', started='06:27:40') (494) terminated with exit code None
+[2026-03-23T06:28:57.743+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2160, status='terminated', started='06:27:49') (2160) terminated with exit code None
+[2026-03-23T06:28:57.748+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3944, status='terminated', started='06:28:01') (3944) terminated with exit code None
+[2026-03-23T06:28:57.564+0000] {taskinstance.py:2607} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-03-23T06:28:57.809+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=892, status='terminated', started='06:27:42') (892) terminated with exit code None
+[2026-03-23T06:28:57.841+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3968, status='terminated', started='06:28:01') (3968) terminated with exit code None
+[2026-03-23T06:28:57.845+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2242, status='terminated', started='06:27:50') (2242) terminated with exit code None
+[2026-03-23T06:28:57.848+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2681, status='terminated', started='06:27:53') (2681) terminated with exit code None
+[2026-03-23T06:28:57.849+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1028, status='terminated', started='06:27:42') (1028) terminated with exit code None
+[2026-03-23T06:28:57.851+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4465, status='terminated', started='06:28:06') (4465) terminated with exit code None
+[2026-03-23T06:28:57.853+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3348, status='terminated', started='06:27:57') (3348) terminated with exit code None
+[2026-03-23T06:28:57.856+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4401, status='terminated', started='06:28:05') (4401) terminated with exit code None
+[2026-03-23T06:28:57.852+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:28:57.860+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4402, status='terminated', started='06:28:05') (4402) terminated with exit code None
+[2026-03-23T06:28:57.863+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4978, status='terminated', started='06:28:26') (4978) terminated with exit code None
+[2026-03-23T06:28:57.867+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3370, status='terminated', started='06:27:57') (3370) terminated with exit code None
+[2026-03-23T06:28:57.870+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=196, status='terminated', started='06:27:36') (196) terminated with exit code None
+[2026-03-23T06:28:57.873+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2066, status='terminated', started='06:27:49') (2066) terminated with exit code None
+[2026-03-23T06:28:57.875+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=316, status='terminated', started='06:27:40') (316) terminated with exit code None
+[2026-03-23T06:28:57.877+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4000, status='terminated', started='06:28:02') (4000) terminated with exit code None
+[2026-03-23T06:28:57.879+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=921, status='terminated', started='06:27:42') (921) terminated with exit code None
+[2026-03-23T06:28:57.881+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3248, status='terminated', started='06:27:56') (3248) terminated with exit code None
+[2026-03-23T06:28:57.886+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2810, status='terminated', started='06:27:53') (2810) terminated with exit code None
+[2026-03-23T06:28:57.920+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3236, status='terminated', started='06:27:56') (3236) terminated with exit code None
+[2026-03-23T06:28:57.949+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2067, status='terminated', started='06:27:49') (2067) terminated with exit code None
+[2026-03-23T06:28:57.951+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4974, status='terminated', started='06:28:26') (4974) terminated with exit code None
+[2026-03-23T06:28:57.980+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=317, status='terminated', started='06:27:40') (317) terminated with exit code None
+[2026-03-23T06:28:58.009+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1568, status='terminated', started='06:27:46') (1568) terminated with exit code None
+[2026-03-23T06:28:58.010+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=928, status='terminated', started='06:27:42') (928) terminated with exit code None
+[2026-03-23T06:28:58.012+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2185, status='terminated', started='06:27:49') (2185) terminated with exit code None
+[2026-03-23T06:28:58.014+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=893, status='terminated', started='06:27:42') (893) terminated with exit code None
+[2026-03-23T06:28:58.016+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4464, status='terminated', started='06:28:05') (4464) terminated with exit code None
+[2026-03-23T06:28:58.018+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2849, status='terminated', started='06:27:53') (2849) terminated with exit code None
+[2026-03-23T06:28:58.035+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=210, status='terminated', started='06:27:38') (210) terminated with exit code None
+[2026-03-23T06:28:58.036+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2807, status='terminated', started='06:27:53') (2807) terminated with exit code None
+[2026-03-23T06:28:58.040+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1638, status='terminated', started='06:27:46') (1638) terminated with exit code None
+[2026-03-23T06:28:58.042+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=629, status='terminated', started='06:27:40') (629) terminated with exit code None
+[2026-03-23T06:28:58.043+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=412, status='terminated', started='06:27:40') (412) terminated with exit code None
+[2026-03-23T06:28:58.045+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1539, status='terminated', started='06:27:46') (1539) terminated with exit code None
+[2026-03-23T06:28:58.046+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=5171, status='terminated', started='06:28:55') (5171) terminated with exit code None
+[2026-03-23T06:28:58.049+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3810, status='terminated', started='06:28:00') (3810) terminated with exit code None
+[2026-03-23T06:28:58.051+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1480, status='terminated', started='06:27:45') (1480) terminated with exit code None
+[2026-03-23T06:28:58.056+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3811, status='terminated', started='06:28:00') (3811) terminated with exit code None
+[2026-03-23T06:28:58.057+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=888, status='terminated', started='06:27:42') (888) terminated with exit code None
+[2026-03-23T06:28:58.059+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1481, status='terminated', started='06:27:45') (1481) terminated with exit code None
+[2026-03-23T06:28:58.060+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2678, status='terminated', started='06:27:53') (2678) terminated with exit code None
+[2026-03-23T06:28:58.062+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2639, status='terminated', started='06:27:52') (2639) terminated with exit code None
+[2026-03-23T06:28:58.117+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4361, status='terminated', started='06:28:04') (4361) terminated with exit code None
+[2026-03-23T06:28:58.119+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4862, status='terminated', started='06:28:19') (4862) terminated with exit code None
+[2026-03-23T06:28:58.121+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3775, status='terminated', started='06:27:59') (3775) terminated with exit code None
+[2026-03-23T06:28:58.122+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=290, status='terminated', started='06:27:39') (290) terminated with exit code None
+[2026-03-23T06:28:58.124+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=3215, status='terminated', started='06:27:56') (3215) terminated with exit code None
+[2026-03-23T06:28:58.126+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=2058, status='terminated', started='06:27:49') (2058) terminated with exit code None
+[2026-03-23T06:28:58.128+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1470, status='terminated', started='06:27:45') (1470) terminated with exit code None
+[2026-03-23T06:28:59.275+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 52, in run_location_batch
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 2113, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2609, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2026-03-23T06:28:59.421+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_007__locs_1401_to_1600, execution_date=20260322T020000, start_date=20260323T062734, end_date=20260323T062859
+[2026-03-23T06:29:04.123+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=188, status='terminated', exitcode=2, started='06:27:34') (188) terminated with exit code 2

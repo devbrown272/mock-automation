@@ -1,0 +1,45 @@
+[2026-03-23T06:06:18.742+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:06:18.981+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 manual__2026-03-23T05:48:00.647587+00:00 [queued]>
+[2026-03-23T06:06:19.031+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 manual__2026-03-23T05:48:00.647587+00:00 [queued]>
+[2026-03-23T06:06:19.035+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:06:19.446+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_007__locs_1401_to_1600> on 2026-03-23 05:48:00.647587+00:00
+[2026-03-23T06:06:19.543+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=510) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:06:19.543+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_007__locs_1401_to_1600', 'manual__2026-03-23T05:48:00.647587+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmp4owww7j2']
+[2026-03-23T06:06:19.566+0000] {standard_task_runner.py:63} INFO - Started process 522 to run task
+[2026-03-23T06:06:19.567+0000] {standard_task_runner.py:91} INFO - Job 35: Subtask location_batches.batch_007__locs_1401_to_1600
+[2026-03-23T06:06:20.665+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_007__locs_1401_to_1600 manual__2026-03-23T05:48:00.647587+00:00 [running]> on host 7849ea7120c5
+[2026-03-23T06:06:21.571+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_007__locs_1401_to_1600' AIRFLOW_CTX_EXECUTION_DATE='2026-03-23T05:48:00.647587+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-23T05:48:00.647587+00:00'
+[2026-03-23T06:06:21.577+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:06:21.640+0000] {lra_refresh_dag.py:51} INFO - Batch 7: 200 locations
+[2026-03-23T06:06:22.908+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T06:06:22.909+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:06:22.910+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 7 failed (exit 1)
+[2026-03-23T06:06:23.008+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_007__locs_1401_to_1600, execution_date=20260323T054800, start_date=20260323T060618, end_date=20260323T060623
+[2026-03-23T06:06:23.045+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 35 for task location_batches.batch_007__locs_1401_to_1600 (Batch 7 failed (exit 1); 522)
+[2026-03-23T06:06:23.144+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T06:06:23.610+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T06:06:23.616+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

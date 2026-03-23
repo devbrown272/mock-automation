@@ -1,0 +1,326 @@
+[2026-03-23T05:40:20.641+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T05:40:20.916+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T05:40:20.953+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T05:40:20.955+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T05:40:21.031+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_000__locs_1_to_200> on 2026-03-22 02:00:00+00:00
+[2026-03-23T05:40:21.069+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_000__locs_1_to_200', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmpl2d2sqql']
+[2026-03-23T05:40:21.089+0000] {standard_task_runner.py:91} INFO - Job 2: Subtask location_batches.batch_000__locs_1_to_200
+[2026-03-23T05:40:21.095+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=174) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T05:40:21.100+0000] {standard_task_runner.py:63} INFO - Started process 182 to run task
+[2026-03-23T05:40:22.315+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [running]> on host 7849ea7120c5
+[2026-03-23T05:40:23.625+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_000__locs_1_to_200' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T05:40:23.633+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T05:40:23.790+0000] {lra_refresh_dag.py:51} INFO - Batch 0: 200 locations
+[2026-03-23T05:40:25.307+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T05:40:25.309+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T05:40:25.311+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 0 failed (exit 1)
+[2026-03-23T05:40:25.460+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_000__locs_1_to_200, execution_date=20260322T020000, start_date=20260323T054020, end_date=20260323T054025
+[2026-03-23T05:40:25.506+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 2 for task location_batches.batch_000__locs_1_to_200 (Batch 0 failed (exit 1); 182)
+[2026-03-23T05:40:25.570+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T05:40:25.755+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T05:40:25.759+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:11:47.122+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:11:47.314+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:11:47.346+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:11:47.351+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:11:47.499+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_000__locs_1_to_200> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:11:47.545+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=174) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:11:47.534+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_000__locs_1_to_200', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmpj8jo5ifo']
+[2026-03-23T06:11:47.548+0000] {standard_task_runner.py:63} INFO - Started process 187 to run task
+[2026-03-23T06:11:47.549+0000] {standard_task_runner.py:91} INFO - Job 7: Subtask location_batches.batch_000__locs_1_to_200
+[2026-03-23T06:11:48.127+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [running]> on host acc78bbd7e9f
+[2026-03-23T06:11:49.251+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_000__locs_1_to_200' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:11:49.254+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:11:49.342+0000] {lra_refresh_dag.py:51} INFO - Batch 0: 200 locations
+[2026-03-23T06:11:51.229+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T06:11:51.233+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:11:51.235+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 0 failed (exit 1)
+[2026-03-23T06:11:51.434+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_000__locs_1_to_200, execution_date=20260322T020000, start_date=20260323T061147, end_date=20260323T061151
+[2026-03-23T06:11:51.481+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 7 for task location_batches.batch_000__locs_1_to_200 (Batch 0 failed (exit 1); 187)
+[2026-03-23T06:11:51.609+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T06:11:51.997+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T06:11:52.006+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:15:20.515+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:15:20.692+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:15:20.719+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:15:20.720+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:15:20.877+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_000__locs_1_to_200> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:15:20.922+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_000__locs_1_to_200', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmpt4uzw9k2']
+[2026-03-23T06:15:20.935+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=237) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:15:20.938+0000] {standard_task_runner.py:63} INFO - Started process 252 to run task
+[2026-03-23T06:15:20.935+0000] {standard_task_runner.py:91} INFO - Job 16: Subtask location_batches.batch_000__locs_1_to_200
+[2026-03-23T06:15:21.521+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [running]> on host acc78bbd7e9f
+[2026-03-23T06:15:22.372+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_000__locs_1_to_200' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:15:22.376+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:15:22.439+0000] {lra_refresh_dag.py:51} INFO - Batch 0: 200 locations
+[2026-03-23T06:15:23.403+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 25, in <module>
+    import aiomysql
+ModuleNotFoundError: No module named 'aiomysql'
+
+[2026-03-23T06:15:23.404+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:15:23.405+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 0 failed (exit 1)
+[2026-03-23T06:15:23.516+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_000__locs_1_to_200, execution_date=20260322T020000, start_date=20260323T061520, end_date=20260323T061523
+[2026-03-23T06:15:23.552+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 16 for task location_batches.batch_000__locs_1_to_200 (Batch 0 failed (exit 1); 252)
+[2026-03-23T06:15:23.633+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T06:15:24.043+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T06:15:24.048+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-03-23T06:27:33.599+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T06:27:33.952+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:27:33.997+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [queued]>
+[2026-03-23T06:27:34.003+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T06:27:34.169+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): location_batches.batch_000__locs_1_to_200> on 2026-03-22 02:00:00+00:00
+[2026-03-23T06:27:34.290+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'location_batches.batch_000__locs_1_to_200', 'scheduled__2026-03-22T02:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/lra_refresh_dag.py', '--cfg-path', '/tmp/tmp42h91kdo']
+[2026-03-23T06:27:34.362+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=173) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T06:27:34.372+0000] {standard_task_runner.py:91} INFO - Job 7: Subtask location_batches.batch_000__locs_1_to_200
+[2026-03-23T06:27:34.375+0000] {standard_task_runner.py:63} INFO - Started process 186 to run task
+[2026-03-23T06:27:35.211+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.location_batches.batch_000__locs_1_to_200 scheduled__2026-03-22T02:00:00+00:00 [running]> on host 4c525425e255
+[2026-03-23T06:27:36.380+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='location_batches.batch_000__locs_1_to_200' AIRFLOW_CTX_EXECUTION_DATE='2026-03-22T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-22T02:00:00+00:00'
+[2026-03-23T06:27:36.384+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T06:27:36.515+0000] {lra_refresh_dag.py:51} INFO - Batch 0: 200 locations
+[2026-03-23T06:29:02.509+0000] {lra_refresh_dag.py:54} WARNING - STDERR:
+2026-03-23 06:27:38,703 [INFO] Run 20260323_062738 — 200 locations, concurrency=10
+2026-03-23 06:27:41,400 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:27:42,668 [INFO] Authentication successful.
+2026-03-23 06:27:44,566 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:27:46,621 [INFO] Authentication successful.
+2026-03-23 06:27:48,797 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:27:50,373 [INFO] Authentication successful.
+2026-03-23 06:27:52,771 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:27:54,516 [INFO] Authentication successful.
+2026-03-23 06:27:56,183 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:27:58,401 [INFO] Authentication successful.
+2026-03-23 06:28:00,421 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:28:02,990 [INFO] Authentication successful.
+2026-03-23 06:28:05,320 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:28:10,378 [INFO] Authentication successful.
+2026-03-23 06:28:57,324 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:28:58,438 [INFO] Authentication successful.
+2026-03-23 06:28:58,905 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:28:59,731 [INFO] Authentication successful.
+2026-03-23 06:29:00,065 [INFO] Navigating to login: http://mock_portal:5001
+2026-03-23 06:29:00,832 [INFO] Authentication successful.
+Traceback (most recent call last):
+  File "/opt/automation/refresh_runner.py", line 185, in <module>
+    asyncio.run(run_batch(location_list, concurrency=args.concurrency, headless=args.headless))
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 685, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/automation/refresh_runner.py", line 160, in run_batch
+    await asyncio.gather(*[process(lid) for lid in location_ids])
+  File "/opt/automation/refresh_runner.py", line 155, in process
+    ok = await refresh_location(page, pool, loc_id, run_id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/automation/refresh_runner.py", line 88, in refresh_location
+    await log_job_start(pool, location_id, run_id)
+  File "/opt/automation/refresh_runner.py", line 53, in log_job_start
+    await cur.execute("""
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'refresh_jobs.refresh_jobs' doesn't exist")
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+Exception ignored in: <function Connection.__del__ at 0x7d23e1c587c0>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 1210, in close
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 793, in call_soon
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 540, in _check_closed
+RuntimeError: Event loop is closed
+
+[2026-03-23T06:29:02.621+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T06:29:02.683+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 460, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/lra_refresh_dag.py", line 56, in run_location_batch
+    raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
+RuntimeError: Batch 0 failed (exit 1)
+[2026-03-23T06:29:03.652+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=reporting_nightly_refresh, task_id=location_batches.batch_000__locs_1_to_200, execution_date=20260322T020000, start_date=20260323T062733, end_date=20260323T062903
+[2026-03-23T06:29:04.102+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 7 for task location_batches.batch_000__locs_1_to_200 (Batch 0 failed (exit 1); 186)
+[2026-03-23T06:29:04.264+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-23T06:29:05.017+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T06:29:05.023+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
