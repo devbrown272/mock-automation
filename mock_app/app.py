@@ -19,6 +19,8 @@ from functools import wraps
 
 app = Flask(__name__)
 app.secret_key = "dev-secret-key-replace-in-prod"
+from datetime import timedelta
+app.permanent_session_lifetime = timedelta(hours=24)
 
 # Simulated locations
 LOCATIONS = {
@@ -172,6 +174,7 @@ def login():
 @app.route("/login", methods=["POST"])
 def do_login():
     if request.form.get("username") == "admin" and request.form.get("password") == "password":
+        session.permanent = True
         session["logged_in"] = True
         return redirect(url_for("dashboard"))
     return render_template_string(LOGIN_HTML, error="Invalid credentials.")

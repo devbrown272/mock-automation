@@ -73,7 +73,9 @@ services:
       - ./automation:/opt/automation:ro
 
   airflow-init:
-    image: apache/airflow:2.9.0
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
     container_name: refresh_airflow_init
     entrypoint: /bin/bash
     command:
@@ -93,7 +95,9 @@ services:
     restart: "no"
 
   airflow-web:
-    image: apache/airflow:2.9.0
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
     container_name: refresh_airflow_web
     command: webserver
     ports:
@@ -110,7 +114,9 @@ services:
     restart: unless-stopped
 
   airflow-scheduler:
-    image: apache/airflow:2.9.0
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
     container_name: refresh_airflow_scheduler
     command: scheduler
     environment:
