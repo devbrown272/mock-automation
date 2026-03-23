@@ -15,8 +15,6 @@ Airflow Variables (set in UI → Admin → Variables):
 """
 
 from __future__ import annotations
-import asyncio
-import os
 import logging
 from datetime import datetime, timedelta
 from airflow import DAG
@@ -24,7 +22,6 @@ from airflow.models import Variable
 from airflow.operators.python import PythonOperator
 from airflow.operators.empty import EmptyOperator
 from airflow.utils.task_group import TaskGroup
-from automation.refresh_runner import run_batch
 
 log = logging.getLogger(__name__)
 
