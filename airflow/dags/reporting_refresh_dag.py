@@ -25,9 +25,9 @@ from airflow.utils.task_group import TaskGroup
 
 log = logging.getLogger(__name__)
 
-CONCURRENCY  = int(Variable.get("REFRESH_CONCURRENCY", default_var=10))
-BATCH_SIZE   = int(Variable.get("REFRESH_BATCH_SIZE",  default_var=200))
-TOTAL_LOCS   = int(Variable.get("REFRESH_TOTAL_LOCS",  default_var=1800))
+CONCURRENCY  = int(Variable.get("REFRESH_CONCURRENCY", default_var=5))
+BATCH_SIZE   = int(Variable.get("REFRESH_BATCH_SIZE",  default_var=20))
+TOTAL_LOCS   = int(Variable.get("REFRESH_TOTAL_LOCS",  default_var=20))
 
 ALL_IDS = [str(i) for i in range(1, TOTAL_LOCS + 1)]
 BATCHES = [ALL_IDS[i : i + BATCH_SIZE] for i in range(0, len(ALL_IDS), BATCH_SIZE)]
@@ -42,22 +42,14 @@ default_args = {
 }
 
 def run_location_batch(batch_index: int, location_ids: list, **context):
-    import sys, os
+    import asyncio, os, sys
     sys.path.insert(0, "/opt/airflow/dags")
-    os.environ["REPORT_URL"] = os.getenv("REPORT_URL", "http://mock_portal:5001")
+    os.environ["REPORT_URL"]  = os.getenv("REPORT_URL",  "http://mock_portal:5001")
     os.environ["REPORT_USER"] = os.getenv("REPORT_USER", "admin")
     os.environ["REPORT_PASS"] = os.getenv("REPORT_PASS", "password")
-
-    import asyncio
+    log.info("Batch %d: %d locations", batch_index, len(location_ids))
     from refresh_runner import run_batch
     asyncio.run(run_batch(location_ids, concurrency=CONCURRENCY, headless=True))
-
-    log.info("Batch %d: %d locations", batch_index, len(location_ids))
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
-    if result.stdout: log.info("STDOUT:\n%s", result.stdout)
-    if result.stderr: log.warning("STDERR:\n%s", result.stderr)
-    if result.returncode != 0:
-        raise RuntimeError(f"Batch {batch_index} failed (exit {result.returncode})")
 
 def check_completion(**context):
     import aiomysql, asyncio, os

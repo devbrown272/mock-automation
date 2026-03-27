@@ -1,0 +1,19 @@
+[2026-03-23T07:44:53.778+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-23T07:44:53.923+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: reporting_nightly_refresh.completion_check manual__2026-03-23T07:26:28.848501+00:00 [queued]>
+[2026-03-23T07:44:53.941+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: reporting_nightly_refresh.completion_check manual__2026-03-23T07:26:28.848501+00:00 [queued]>
+[2026-03-23T07:44:53.943+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 4
+[2026-03-23T07:44:53.972+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): completion_check> on 2026-03-23 07:26:28.848501+00:00
+[2026-03-23T07:44:53.990+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'reporting_nightly_refresh', 'completion_check', 'manual__2026-03-23T07:26:28.848501+00:00', '--job-id', '34', '--raw', '--subdir', 'DAGS_FOLDER/reporting_refresh_dag.py', '--cfg-path', '/tmp/tmpibbziu4s']
+[2026-03-23T07:44:53.995+0000] {standard_task_runner.py:91} INFO - Job 34: Subtask completion_check
+[2026-03-23T07:44:54.002+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=18600) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-23T07:44:54.003+0000] {standard_task_runner.py:63} INFO - Started process 18601 to run task
+[2026-03-23T07:44:54.368+0000] {task_command.py:426} INFO - Running <TaskInstance: reporting_nightly_refresh.completion_check manual__2026-03-23T07:26:28.848501+00:00 [running]> on host a693e61dd0e6
+[2026-03-23T07:44:54.956+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='finance-ops' AIRFLOW_CTX_DAG_ID='reporting_nightly_refresh' AIRFLOW_CTX_TASK_ID='completion_check' AIRFLOW_CTX_EXECUTION_DATE='2026-03-23T07:26:28.848501+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-23T07:26:28.848501+00:00'
+[2026-03-23T07:44:54.958+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-23T07:44:55.001+0000] {reporting_refresh_dag.py:73} INFO - 97.5% complete (156/160) | errors: 0 | timeouts: 0
+[2026-03-23T07:44:55.002+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-03-23T07:44:55.003+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-23T07:44:55.061+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=reporting_nightly_refresh, task_id=completion_check, execution_date=20260323T072628, start_date=20260323T074453, end_date=20260323T074455
+[2026-03-23T07:44:55.144+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-03-23T07:44:55.220+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-23T07:44:55.224+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

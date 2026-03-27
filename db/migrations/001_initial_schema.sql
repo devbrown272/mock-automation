@@ -1,5 +1,5 @@
--- Reporting Automation — Job Tracking Schema
--- No PHI is stored here. This tracks operational metadata only.
+-- Reporting Automation Job Tracking Schema
+-- No PHI is stored. This tracks operational metadata only.
 
 CREATE DATABASE IF NOT EXISTS refresh_jobs
     CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -25,8 +25,7 @@ CREATE TABLE IF NOT EXISTS refresh_jobs (
     status        ENUM('running','complete','error','timeout','skipped') NOT NULL DEFAULT 'running',
     started_at    DATETIME            NULL,
     completed_at  DATETIME            NULL,
-    duration_sec  DECIMAL(8,2)        NULL
-                  GENERATED ALWAYS AS (TIMESTAMPDIFF(SECOND, started_at, completed_at)) STORED,
+    duration_sec  DECIMAL(8,2)        NULL,
     retry_count   TINYINT         NOT NULL DEFAULT 0,
     error_message TEXT                NULL,
     PRIMARY KEY (id),
